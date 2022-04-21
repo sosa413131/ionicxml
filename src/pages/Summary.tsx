@@ -8,13 +8,12 @@ interface SummaryPageProps extends RouteComponentProps<{
     id:string, 
 }>{}
 
-// , title, author, summary,  imageUrl, date, body
 const Summary: React.FC<SummaryPageProps> = ({match}) => {
-    const [post, setPost] = useState<any>();
+    const [post, setPost] = useState<any>(null);
 
     useEffect(() => {
+        // update the state with post info
         fetchPost();            
-        
     }, []);
 
     // query to get the blog post with an ID that matches the ID from the url parameter
@@ -23,15 +22,11 @@ const Summary: React.FC<SummaryPageProps> = ({match}) => {
      }).then((response : any) =>{
 
         const xml = response.data;
-        const json= txml.parse(response.data);
+        const obj= txml.parse(response.data);
 
-        for (var i=0; i<json[1]['children'].length; i++){
-            if(json[1]['children'][i]["attributes"]["id"]==match.params.id){
-                console.log("match found!")
-                console.log("url param: ", match.params.id);
-                console.log("matching id in xml: ", json[1]['children'][i]["attributes"]["id"] )
-                console.log("post object:", json[1]['children'][i])
-                setPost(json[1]['children'][i]);
+        for (var i=0; i<obj[1]['children'].length; i++){
+            if(obj[1]['children'][i]["attributes"]["id"]==match.params.id){
+                setPost(obj[1]['children'][i]);
             }
         }
 
@@ -39,17 +34,20 @@ const Summary: React.FC<SummaryPageProps> = ({match}) => {
   .catch(error=> console.log(`Error: ${error}`));
 
 }
-
+if(post){
     return (
         <div>
-           <span className='keyName'> id:</span> {match.params.id} <br/>
-           {/* <span className='keyName'> date: </span>{post.children[0].children[0]}<br/>
-           <span className='keyName'> author: </span>{post.children[1].children[0]}<br/>
-           <span className='keyName' > title:  </span>{post.children[2].children[0]}<br/>
-           <span className='keyName'> summary: </span>{post.children[3].children[0]}<br/>
-           <span className='keyName'> body:  </span>{post.children[4].children[0]} */}
+           <p><span className='keyName'> id: </span>{post.attributes.id}</p>
+           <p><span className='keyName'> date: </span>{post.children[0].children[0]}</p>
+           <p><span className='keyName'> author: </span>{post.children[1].children[0]}</p>
+           <p><span className='keyName' > title: </span>{post.children[2].children[0]}</p>
+           <p><span className='keyName'> summary: </span>{post.children[3].children[0]}</p>
+           <p><span className='keyName'> body: </span>{post.children[4].children[0]}</p>
         </div>
     )
+        }else{
+            return<> No Match for that post ID</>
+        }
     
 
     }
