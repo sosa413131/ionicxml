@@ -1,0 +1,7 @@
+{
+  "name": "blogwebsite",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
