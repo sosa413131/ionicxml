@@ -5,6 +5,9 @@ interface ContainerProps { }
 const Footer: React.FC<ContainerProps> = () => {
   return (
     <>
+        <p>
+            Footer
+        </p>
     </>
   );
 };
