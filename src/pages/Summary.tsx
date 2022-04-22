@@ -30,8 +30,7 @@ const Summary: React.FC<SummaryPageProps> = ({match}) => {
             }
         }
 
-  })
-  .catch(error=> console.log(`Error: ${error}`));
+  }).catch(error=> console.log(`Error: ${error}`));
 
 }
 if(post){
@@ -46,7 +45,7 @@ if(post){
         </div>
     )
         }else{
-            return<> No Match for that post ID</>
+            return<> No match for that post ID</>
         }
     
 
