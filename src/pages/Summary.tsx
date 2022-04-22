@@ -17,7 +17,7 @@ const Summary: React.FC<SummaryPageProps> = ({match}) => {
     }, []);
 
     // query to get the blog post with an ID that matches the ID from the url parameter
-    function fetchPost(){
+    function fetchPost():void{
     axios.get('/assets/blogposts.xml', {
      }).then((response : any) =>{
 

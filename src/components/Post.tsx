@@ -15,7 +15,7 @@ const Post: React.FC<ContainerProps> = ({title, link, author, summary, id, image
         <div className='post'>
             <h1><a id={id} href={link}>{title}</a></h1>
             <h2>{date}</h2>
-            <img src={imageUrl}/>
+            <img className ='postImage' src={imageUrl}/>
             <p>{summary}</p>
         </div>
     );

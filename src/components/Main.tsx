@@ -13,10 +13,9 @@ const Main: React.FC<ContainerProps> = () => {
   useEffect(() => {
     // update the state with post info
     fetchPostArray();
-    // console.log("postArray:", postArray)
   }, []);
 
-function fetchPostArray():any {
+function fetchPostArray():void {
   axios.get('/assets/blogposts.xml', {
    }).then((response : any) =>{
 
@@ -35,18 +34,17 @@ if(postArray){
            return (
            <div key={index}> 
              <Post 
-             title={post['children'][2]['children'][0]} 
-             link={`/summary/${post['attributes']['id']}`} 
-             author='' 
-             summary='' 
-             id='' 
-             imageUrl='' 
-             date='' />
+              id={post["attributes"]["id"]}
+              date={post['children'][0]['children'][0]}
+              author={post['children'][1]['children'][0]}
+              title={post['children'][2]['children'][0]} 
+              summary={post['children'][3]['children'][0]} 
+              imageUrl={`/assets/images/${post['children'][5]['children'][0]}`} 
+              link={`/summary/${post['attributes']['id']}`} />
+
              </div>)
          })}
     </div>
-
-    // <>test</>
   );
 }else{
   return <>No Posts</>
