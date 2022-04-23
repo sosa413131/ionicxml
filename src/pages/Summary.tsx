@@ -6,6 +6,7 @@ import axios from 'axios';
 import * as txml from 'txml';
 import './Summary.css'
 import Footer from '../components/Footer'
+import { capitalizeTitle } from '../utils/utility';
 
 interface SummaryPageProps extends RouteComponentProps<{ 
     id:string, 
@@ -48,7 +49,7 @@ if(post){
                 </IonBreadcrumb>
             </IonBreadcrumbs>
                 {/* <IonTitle>            */}
-                    <span className='keyName title' >{post.children[2].children[0]}</span>
+                    <span className='keyName title' >{capitalizeTitle(post.children[2].children[0])}</span>
                 {/* </IonTitle> */}
                 <IonContent>
                     <IonImg src={`/assets/images/${post.children[5].children[0]}`}/>

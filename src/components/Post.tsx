@@ -19,11 +19,12 @@ const Post: React.FC<ContainerProps> = ({title, link, author, summary, id, image
             <IonCardHeader>         
                 <img className ='postImage' src={imageUrl}/> 
                 <IonCardTitle><a id={id} href={link}>{title}</a></IonCardTitle>
-                <IonCardSubtitle>By {author}</IonCardSubtitle>
+                <IonCardSubtitle> By {author}</IonCardSubtitle>
             </IonCardHeader> 
 
             <IonCardContent>
             <p>{summary}</p>
+            <div className='date'>{date}</div>
             </IonCardContent>
           <IonFab vertical="center" horizontal="end">
           <IonFabButton href={link}>

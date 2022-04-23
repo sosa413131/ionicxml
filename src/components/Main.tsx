@@ -3,7 +3,7 @@ import Post from '../components/Post';
 import axios from 'axios';
 import * as txml from 'txml';
 import './Main.css';
-
+import { capitalizeTitle } from '../utils/utility';
 
 interface ContainerProps { }
 
@@ -27,18 +27,18 @@ function fetchPostArray():void {
    }).catch(error=> console.log(`Error: ${error}`));
   }
 
-  function capitalizeTitle(titleUncapitalized :string){
-    var array = titleUncapitalized.split(" ");
-    var newTitle=''
-    for (var i=0; i<array.length; i++){
-      let word=array[i];
-      word = word.charAt(0).toUpperCase() + word.slice(1);
-      newTitle=newTitle+word+' ';
-    }
+  // function capitalizeTitle(titleUncapitalized :string){
+  //   var array = titleUncapitalized.split(" ");
+  //   var newTitle=''
+  //   for (var i=0; i<array.length; i++){
+  //     let word=array[i];
+  //     word = word.charAt(0).toUpperCase() + word.slice(1);
+  //     newTitle=newTitle+word+' ';
+  //   }
 
-    return newTitle;
+  //   return newTitle;
     
-  }
+  // }
 
 if(postArray){
   return (
