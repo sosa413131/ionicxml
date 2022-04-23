@@ -1,8 +1,10 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonBreadcrumbs, IonBreadcrumb, IonIcon, IonList, IonItem, IonThumbnail, IonImg, IonLabel  } from '@ionic/react';
+import { folder, home, planetOutline, key, keyOutline, keySharp} from 'ionicons/icons';
 import { RouteComponentProps, useHistory, useParams} from "react-router-dom"
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import * as txml from 'txml';
+import './Summary.css'
 
 interface SummaryPageProps extends RouteComponentProps<{ 
     id:string, 
@@ -25,8 +27,9 @@ const Summary: React.FC<SummaryPageProps> = ({match}) => {
         const obj= txml.parse(response.data);
 
         for (var i=0; i<obj[1]['children'].length; i++){
-            if(obj[1]['children'][i]["attributes"]["id"]==match.params.id){
+            if(obj[1]['children'][i]["attributes"]["id"]===match.params.id){
                 setPost(obj[1]['children'][i]);
+                // console.log(post);
             }
         }
 
@@ -35,14 +38,27 @@ const Summary: React.FC<SummaryPageProps> = ({match}) => {
 }
 if(post){
     return (
-        <div>
-           <p><span className='keyName'> id: </span>{post.attributes.id}</p>
-           <p><span className='keyName'> date: </span>{post.children[0].children[0]}</p>
-           <p><span className='keyName'> author: </span>{post.children[1].children[0]}</p>
-           <p><span className='keyName' > title: </span>{post.children[2].children[0]}</p>
-           <p><span className='keyName'> summary: </span>{post.children[3].children[0]}</p>
-           <p><span className='keyName'> body: </span>{post.children[4].children[0]}</p>
-        </div>
+        <IonPage>
+            <IonBreadcrumbs color="secondary">
+                <IonBreadcrumb href='/'> 
+                     Home
+                </IonBreadcrumb>
+                <IonBreadcrumb href={`/summary/${post.attributes.id}`}>
+                     Summary
+                </IonBreadcrumb>
+            </IonBreadcrumbs>
+                {/* <IonTitle>            */}
+                    <span className='keyName title' >{post.children[2].children[0]}</span>
+                {/* </IonTitle> */}
+                <IonContent>
+                    <IonImg src={`/assets/images/${post.children[5].children[0]}`}/>
+                    <p><span className='keyName'> date: </span>{post.children[0].children[0]}</p>
+                    <p><span className='keyName'> author: </span>{post.children[1].children[0]}</p>
+                    <p><span className='keyName'></span>{post.children[3].children[0]}</p>
+                    <p><span className='keyName'> </span>{post.children[4].children[0]}</p>
+                    <p className='id'><span className='keyName '>POST ID: </span>{post.attributes.id}</p>
+                </IonContent>
+        </IonPage>
     )
         }else{
             return<> No match for that post ID</>

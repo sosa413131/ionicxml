@@ -4,11 +4,10 @@ interface ContainerProps { }
 
 const Footer: React.FC<ContainerProps> = () => {
   return (
-    <>
-        <p>
-            Footer
-        </p>
-    </>
+    <div>
+      <p> © Copyright David Sosa 2022 
+      </p>
+    </div>
   );
 };
 

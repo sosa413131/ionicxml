@@ -27,17 +27,32 @@ function fetchPostArray():void {
    }).catch(error=> console.log(`Error: ${error}`));
   }
 
+  function capitalizeTitle(titleUncapitalized :string){
+    var array = titleUncapitalized.split(" ");
+    var newTitle=''
+    for (var i=0; i<array.length; i++){
+      let word=array[i];
+      word = word.charAt(0).toUpperCase() + word.slice(1);
+      newTitle=newTitle+word+' ';
+    }
+
+    return newTitle;
+    
+  }
+
 if(postArray){
   return (
     <div className='blogPosts'>
          {postArray.map((post:any, index:string)=>{
+
+          //  console.log(newTitle)
            return (
            <div key={index}> 
              <Post 
               id={post["attributes"]["id"]}
               date={post['children'][0]['children'][0]}
               author={post['children'][1]['children'][0]}
-              title={post['children'][2]['children'][0]} 
+              title={capitalizeTitle(post['children'][2]['children'][0])} 
               summary={post['children'][3]['children'][0]} 
               imageUrl={`/assets/images/${post['children'][5]['children'][0]}`} 
               link={`/summary/${post['attributes']['id']}`} />

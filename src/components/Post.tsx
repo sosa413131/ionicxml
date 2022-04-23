@@ -1,3 +1,5 @@
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel, IonButton, IonFab,  IonFabButton, useIonRouter } from '@ionic/react';
+import {arrowForwardCircle} from 'ionicons/icons';
 import './Post.css';
 
 interface ContainerProps { 
@@ -11,13 +13,24 @@ interface ContainerProps {
 }
 
 const Post: React.FC<ContainerProps> = ({title, link, author, summary, id, imageUrl, date}) => {
+
     return (
-        <div className='post'>
-            <h2>{date}</h2>
-            <h1><a id={id} href={link}>{title}</a></h1>  <h3>By {author}</h3>
-            <img className ='postImage' src={imageUrl}/>
+        <IonCard className='post'>
+            <IonCardHeader>         
+                <img className ='postImage' src={imageUrl}/> 
+                <IonCardTitle><a id={id} href={link}>{title}</a></IonCardTitle>
+                <IonCardSubtitle>By {author}</IonCardSubtitle>
+            </IonCardHeader> 
+
+            <IonCardContent>
             <p>{summary}</p>
-        </div>
+            </IonCardContent>
+          <IonFab vertical="center" horizontal="end">
+          <IonFabButton href={link}>
+          <IonIcon icon={arrowForwardCircle}/>
+          </IonFabButton>
+        </IonFab>
+        </IonCard>
     );
 };
 

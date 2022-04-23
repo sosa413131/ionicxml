@@ -6,7 +6,7 @@ const Header: React.FC<ContainerProps> = () => {
   return (
     <>
         <p>
-            Header
+            Welcome to my blog. I added a few posts to test some things out.
         </p>
     </>
   );
