@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import useScrollbarSize from 'react-scrollbar-size';
 import './Nav.css';
 
 interface ContainerProps { }
 
 const Nav: React.FC<ContainerProps> = () => {
   const [norrisJoke, setNorrisJoke] = useState<any>(null);
-
   
   useEffect(() => {
     // update the state with joke 
@@ -28,14 +28,18 @@ const Nav: React.FC<ContainerProps> = () => {
 
 }
 
+  const { height, width } = useScrollbarSize();
+
   if (norrisJoke){
-  return (<>
-  <img src='/assets/images/cryinglaughing.gif' className='lol'/>
+
+    let scrollbarWidth = width;
+  return (<div className='lol' style={{marginRight:`${width+'px'}`}}>
+  <img src='/assets/images/cryinglaughing.gif' />
     <div className='jokeContainer'>
     <div className='jokeHeader'>Chuck Norris Joke:</div>
     <div className='joke'>{norrisJoke}</div>
     </div>
-    </>
+    </ div>
   )}else{
    return <>Sorry, No Jokes Available</>
   }

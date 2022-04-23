@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Home Page</IonTitle>
+          <IonTitle>David Sosa's Blog</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>

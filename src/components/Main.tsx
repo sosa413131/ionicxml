@@ -21,7 +21,7 @@ function fetchPostArray():void {
 
     const xml=response.data;
     const postArray = txml.parse(response.data)[1]['children']
-    console.log(postArray[0])
+    // console.log(postArray[0])
     setPostArray(postArray);
 
    }).catch(error=> console.log(`Error: ${error}`));
