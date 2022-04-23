@@ -40,17 +40,15 @@ const Summary: React.FC<SummaryPageProps> = ({match}) => {
 if(post){
     return (
         <IonPage>
-            <IonBreadcrumbs color="secondary">
+                <IonBreadcrumbs color="secondary">
                 <IonBreadcrumb href='/'> 
-                     Home
+                    Home
                 </IonBreadcrumb>
-                <IonBreadcrumb href={`/summary/${post.attributes.id}`}>
-                     Summary
+                <IonBreadcrumb href={`/blogpost/${post.attributes.id}`}>
+                   Blog Post {post.attributes.id} 
                 </IonBreadcrumb>
-            </IonBreadcrumbs>
-                {/* <IonTitle>            */}
-                    <span className='keyName title' >{capitalizeTitle(post.children[2].children[0])}</span>
-                {/* </IonTitle> */}
+                </IonBreadcrumbs>
+                <span className='keyName title' >{capitalizeTitle(post.children[2].children[0])}</span>
                 <IonContent>
                     <IonImg src={`/assets/images/${post.children[5].children[0]}`}/>
                     <p><span className='keyName'> date: </span>{post.children[0].children[0]}</p>

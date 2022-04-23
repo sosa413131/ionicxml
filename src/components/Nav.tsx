@@ -31,15 +31,14 @@ const Nav: React.FC<ContainerProps> = () => {
   const { height, width } = useScrollbarSize();
 
   if (norrisJoke){
-    
-  return (<div className='lol' style={{marginRight:`${width+'px'}`}}>
-  <img src='/assets/images/cryinglaughing.gif' />
-    <div className='jokeContainer'>
-    <div className='jokeHeader'>Chuck Norris Joke:</div>
-    <div className='joke'>{norrisJoke}</div>
-    </div>
-    </div>
-  )}else{
+    return (<div className='lol' style={{marginRight:`${width+'px'}`}}>
+    <img src='/assets/images/cryinglaughing.gif' />
+      <div className='jokeContainer'>
+      <div className='jokeHeader'>Chuck Norris Joke:</div>
+      <div className='joke'>{norrisJoke}</div>
+      </div>
+      </div>
+    )}else{
    return <>Sorry, No Jokes Available</>
   }
 };

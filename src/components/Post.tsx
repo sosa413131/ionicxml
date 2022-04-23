@@ -23,14 +23,14 @@ const Post: React.FC<ContainerProps> = ({title, link, author, summary, id, image
             </IonCardHeader> 
 
             <IonCardContent>
-            <p>{summary}</p>
-            <div className='date'>{date}</div>
+                <p>{summary}</p>
+                <div className='date'>{date}</div>
             </IonCardContent>
           <IonFab vertical="center" horizontal="end">
-          <IonFabButton href={link}>
-          <IonIcon icon={arrowForwardCircle}/>
-          </IonFabButton>
-        </IonFab>
+                <IonFabButton href={link}>
+                    <IonIcon icon={arrowForwardCircle}/>
+                </IonFabButton>
+            </IonFab>
         </IonCard>
     );
 };
