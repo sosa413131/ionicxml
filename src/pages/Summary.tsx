@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import * as txml from 'txml';
 import './Summary.css'
+import Footer from '../components/Footer'
 
 interface SummaryPageProps extends RouteComponentProps<{ 
     id:string, 
@@ -58,10 +59,11 @@ if(post){
                     <p><span className='keyName'> </span>{post.children[4].children[0]}</p>
                     <p className='id'><span className='keyName '>POST ID: </span>{post.attributes.id}</p>
                 </IonContent>
+                <Footer/>
         </IonPage>
     )
         }else{
-            return<> No match for that post ID</>
+            return<> No match for that post ID <Footer/></>
         }
     
 
