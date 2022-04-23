@@ -15,28 +15,24 @@ interface SummaryPageProps extends RouteComponentProps<{
 const Summary: React.FC<SummaryPageProps> = ({match}) => {
     const [post, setPost] = useState<any>(null);
 
+
     useEffect(() => {
+            // query to get the blog post with an ID that matches the ID from the url parameter
+    function fetchPost():void{
+        axios.get('/assets/blogposts.xml', {
+        }).then((response : any) =>{
+            const obj= txml.parse(response.data);
+            for (var i=0; i<obj[1]['children'].length; i++){
+                if(obj[1]['children'][i]["attributes"]["id"]===match.params.id){
+                    setPost(obj[1]['children'][i]);
+                }
+            }
+        }).catch(error=> console.log(`Error: ${error}`));
+    }
         // update the state with post info
         fetchPost();            
-    }, []);
+    }, [match]);
 
-    // query to get the blog post with an ID that matches the ID from the url parameter
-    function fetchPost():void{
-    axios.get('/assets/blogposts.xml', {
-     }).then((response : any) =>{
-
-        const xml = response.data;
-        const obj= txml.parse(response.data);
-
-        for (var i=0; i<obj[1]['children'].length; i++){
-            if(obj[1]['children'][i]["attributes"]["id"]===match.params.id){
-                setPost(obj[1]['children'][i]);
-            }
-        }
-
-  }).catch(error=> console.log(`Error: ${error}`));
-
-}
 if(post){
     return (
         <IonPage>

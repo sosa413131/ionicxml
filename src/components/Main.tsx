@@ -18,11 +18,8 @@ const Main: React.FC<ContainerProps> = () => {
 function fetchPostArray():void {
   axios.get('/assets/blogposts.xml', {
    }).then((response : any) =>{
-
-    const xml=response.data;
     const postArray = txml.parse(response.data)[1]['children']
     setPostArray(postArray);
-
    }).catch(error=> console.log(`Error: ${error}`));
   }
 

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import {IonIcon, IonFab, IonFabButton, IonImg} from '@ionic/react'
 import axios from 'axios';
 import useScrollbarSize from 'react-scrollbar-size';
+import {arrowUpCircle} from 'ionicons/icons';
 import './Nav.css';
 
 interface ContainerProps { }
@@ -25,18 +27,22 @@ const Nav: React.FC<ContainerProps> = () => {
     const joke = response.data.value;
     setNorrisJoke(joke);
   })
+}
 
+function backToTop(){
+  console.log("backToTop")
 }
 
   const { height, width } = useScrollbarSize();
 
   if (norrisJoke){
     return (<div className='lol' style={{marginRight:`${width+'px'}`}}>
-    <img src='/assets/images/cryinglaughing.gif' />
+    <IonImg src='/assets/images/cryinglaughing.gif' />
       <div className='jokeContainer'>
       <div className='jokeHeader'>Chuck Norris Joke:</div>
       <div className='joke'>{norrisJoke}</div>
       </div>
+      {/* <IonFab><IonIcon icon={arrowUpCircle} onClick={backToTop}></IonIcon></IonFab> */}
       </div>
     )}else{
    return <>Sorry, No Jokes Available</>

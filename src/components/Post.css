@@ -1,9 +1,12 @@
-.postImage{
-    height:200px;
-    width: 200px;
-}
-
 .date{
     text-align: center;
     font-size: 10px;
+}
+
+.button{
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom:0;
+    margin:2%;
 }
