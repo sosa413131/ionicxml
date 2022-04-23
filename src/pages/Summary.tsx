@@ -30,7 +30,6 @@ const Summary: React.FC<SummaryPageProps> = ({match}) => {
         for (var i=0; i<obj[1]['children'].length; i++){
             if(obj[1]['children'][i]["attributes"]["id"]===match.params.id){
                 setPost(obj[1]['children'][i]);
-                // console.log(post);
             }
         }
 
